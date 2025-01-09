@@ -23,7 +23,7 @@ If your project is in an Unreal version of one of the other branch's names, then
 
 **C++**
 
-Adds several macros similiar to Unreal's assertion macros, like _check_.
+Adds several macros similiar to Unreal's assertion macros, like [check](https://dev.epicgames.com/documentation/en-us/unreal-engine/asserts-in-unreal-engine).
 If these macros detect the function wasn't called from Blueprint, it will function like a normal assertion, crashing the entire editor. Otherwise, _all_ C++ code will complete in the current stack until control is returned to Blueprint, where the editor will stop the PIE session. This means all smart assert macros need to return, or the code after them will still execute, which is a big problem! If a blueprint node calls C++ function 1, which calls function 2, and function 2 asserts, function 1 will still fully execute. If function 1 also asserts, 2 assert messages will appear in the logs.
 
 | **Name**                          | **Macro**                                       | **Description**                                                      |
