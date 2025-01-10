@@ -1,9 +1,0 @@
-{
-	"BuildId": "27405482",
-	"Modules": 
-	{
-		"SafeCheckEditor": "UnrealEditor-SafeCheckEditor.dll",
-		"SafeCheckMacros": "UnrealEditor-SafeCheckMacros.dll",
-		"Test": "UnrealEditor-Test.dll"
-	}
-}
