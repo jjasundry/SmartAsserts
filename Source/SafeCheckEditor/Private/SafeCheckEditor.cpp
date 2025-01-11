@@ -8,7 +8,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "UnrealEd.h"
 #include "UObject/Stack.h"
-#if ENGINE_MINOR_VERSION == 5
+#if ENGINE_MINOR_VERSION >= 4
 #include "Blueprint/BlueprintExceptionInfo.h"
 #else
 #include "UObject/Script.h"
