@@ -9,7 +9,7 @@ All smart asserts log their messages both to the logger, but also to the PIE mes
 
 ## Requirement
 
-Target version : UE 5.0-5.5    
+Target version : UE 5.1-5.5    
 Target platform : Windows  
 
 ## Installation
