@@ -27,7 +27,7 @@ If you wish to enable to the plugin manually, add this to your .uproject file:
   }
 ]
 ```
-If you want the plugin installed to a specific project and not an engine, follow these instructions instead. Install the plugin to the engine matching the project you want it added to. Copy the files downloaded into ``Unreal Engine version location->Engine->Plugins->Marketplace->SmartAsserts`` (There might be a long line of random characters after SmartAsserts) then paste them into ``Project Folder->Plugins->SmartAsserts``. You are then able to uninstall the plugin from the engine.
+**If** you want the plugin installed to a specific project and not an engine, follow these instructions instead. Install the plugin to the engine matching the project you want it added. Copy the files downloaded into ``Unreal Engine version location->Engine->Plugins->Marketplace->SmartAsserts`` (There might be a long line of random characters after SmartAsserts) then paste them into ``Project Folder->Plugins->SmartAsserts``. You are then able to uninstall the plugin from the engine.
 
 ### From [GitHub](https://github.com/jjasundry/SmartAsserts)
 
