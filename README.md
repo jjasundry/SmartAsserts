@@ -27,16 +27,16 @@ If you wish to enable to the plugin manually, add this to your .uproject file:
   }
 ]
 ```
-**If** you want the plugin installed to a specific project and not an engine, follow these instructions instead. Install the plugin to the engine matching the project you want it added. Copy the files downloaded into ``Unreal Engine version location->Engine->Plugins->Marketplace->SmartAsserts`` (There might be a long line of random characters after SmartAsserts) then paste them into ``Project Folder->Plugins->SmartAsserts``. You are then able to uninstall the plugin from the engine.
+If you want the plugin installed to a specific project and not an engine, follow these instructions instead. Install the plugin to the engine matching the project you want it added. Copy the files downloaded into ``Unreal Engine version location->Engine->Plugins->Marketplace->SmartAsserts`` (There might be a long line of random characters after SmartAsserts) then paste them into ``Project Folder->Plugins->SmartAsserts``. You are then able to uninstall the plugin from the engine.
 
 ### From [GitHub](https://github.com/jjasundry/SmartAsserts)
 
-Download the files from the branch named after the version of unreal your project is built in. Place the files in this path: ``Project Folder->Plugins->SmartAsserts``. You will need to rebuild the plugin from source. 
+Download the files from the branch named after the version of Unreal your project is built in. Place the files in this path: ``Project Folder->Plugins->SmartAsserts``. You will need to rebuild the plugin from source. 
 
 ### Using this Plugin
 
 After installing the plugin, you should be able to call all blueprint nodes in the editor. I'd recommend making sure the "Assert" node shows up. If it does not, the plugin did not get installed.
-To access the C++ features of this plugin, add ``"SafeCheckMacros"`` to the PrivateDependencyModuleNames in the .Build.cs file of the module you want to use this plugin in. After that, you are able to add ``#include "SafeCheckMacros.h"`` to any file inside that module and access all of the C++ features from this module.
+To access the C++ features of this plugin, add ``"SafeCheckMacros"`` to the PrivateDependencyModuleNames in the .Build.cs file of the module you want to use this plugin. After that, you are able to add ``#include "SafeCheckMacros.h"`` to any file inside that module and access all of the C++ features from this module.
 
 ## Features And Usages
 
@@ -67,4 +67,4 @@ Adds a node called "Assert" that will crash the PIE session. Outside the editor 
 ## History
 
 - (1/8/2025) v1.0  
-  Published to github and Fab marketplace 
+  Published to GitHub and Fab marketplace 
