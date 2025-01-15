@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class SafeCheckEditor : ModuleRules
+public class SmartAssertEditor : ModuleRules
 {
-	public SafeCheckEditor(ReadOnlyTargetRules Target) : base(Target)
+	public SmartAssertEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
@@ -17,7 +17,7 @@ public class SafeCheckEditor : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[] {});
 			
 		
-		PrivateDependencyModuleNames.AddRange(new string[] {"Core", "SafeCheckMacros", "UnrealEd", "CoreUObject", "Engine"});
+		PrivateDependencyModuleNames.AddRange(new string[] {"Core", "SmartAssertMacros", "UnrealEd", "CoreUObject", "Engine"});
 		
 		
 		DynamicallyLoadedModuleNames.AddRange(new string[] {});
