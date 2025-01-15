@@ -7,8 +7,9 @@
 	"Category": "Programming",
 	"CreatedBy": "JJA Sundry",
 	"CreatedByURL": "",
-	"DocsURL": "",
-	"MarketplaceURL": "",
+	"DocsURL": "https://github.com/jjasundry/SmartAsserts",
+	"MarketplaceURL": "https://www.fab.com/listings/77a7b694-c15e-4e7f-a15d-bef5d82ae70d",
+	"FabURL": "com.epicgames.launcher://ue/Fab/product/77a7b694-c15e-4e7f-a15d-bef5d82ae70d",
 	"SupportURL": "",
 	"CanContainContent": false,
 	"IsBetaVersion": false,
@@ -16,14 +17,20 @@
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "SafeCheckMacros",
+			"Name": "SmartAssertMacros",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64"
+			]
 		},
 		{
-			"Name": "SafeCheckEditor",
+			"Name": "SmartAssertEditor",
 			"Type": "Editor",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64"
+			]
 		}
 	]
 }

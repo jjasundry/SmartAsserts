@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-class FSafeCheckMacrosModule : public IModuleInterface
+class FSmartAssertMacrosModule : public IModuleInterface
 {
 public:
 	/** IModuleInterface implementation */
@@ -13,12 +13,12 @@ public:
 	virtual void ShutdownModule() override;
 
 #if WITH_EDITOR
-	//Needs to return false if the editor is not eligible for SafeCheck
+	//Needs to return false if the editor is not eligible for SmartAssert
 	//All asserts will call delegates so the actual logic for asserting can be in a seperate editor module. Otherwise this runtime module will reference editor modules, causing problems when shipping.
-	DECLARE_DELEGATE_RetVal_FourParams(bool, FOnSafeCheck, FString, FString, int32, FString);
+	DECLARE_DELEGATE_RetVal_FourParams(bool, FOnSmartAssert, FString, FString, int32, FString);
 	DECLARE_DELEGATE_RetVal_OneParam(bool, FOnBlueprintAssert, FString);
-	static SAFECHECKMACROS_API FOnSafeCheck OnSafeCheck;
-	static SAFECHECKMACROS_API FOnBlueprintAssert OnBlueprintAssert;
+	static SMARTASSERTMACROS_API FOnSmartAssert OnSmartAssert;
+	static SMARTASSERTMACROS_API FOnBlueprintAssert OnBlueprintAssert;
 #endif
 };
 
@@ -27,7 +27,7 @@ public:
 		#define scheck(expr) \
 			if (UNLIKELY(!(expr))) \
 			{ \
-				if (!(FSafeCheckMacrosModule::OnSafeCheck.IsBound() && FSafeCheckMacrosModule::OnSafeCheck.Execute(FString(#expr), FString(__FILE__), __LINE__, TEXT("")))) \
+				if (!(FSmartAssertMacrosModule::OnSmartAssert.IsBound() && FSmartAssertMacrosModule::OnSmartAssert.Execute(FString(#expr), FString(__FILE__), __LINE__, TEXT("")))) \
 				{ \
 					if (FDebug::CheckVerifyFailedImpl(#expr, __FILE__, __LINE__, PLATFORM_RETURN_ADDRESS(), TEXT(""))) \
 					{ \
@@ -47,7 +47,7 @@ public:
 		#define srcheck(expr, return_value) \
 			if (UNLIKELY(!(expr))) \
 			{ \
-				if (!(FSafeCheckMacrosModule::OnSafeCheck.IsBound() && FSafeCheckMacrosModule::OnSafeCheck.Execute(FString(#expr), FString(__FILE__), __LINE__, TEXT("")))) \
+				if (!(FSmartAssertMacrosModule::OnSmartAssert.IsBound() && FSmartAssertMacrosModule::OnSmartAssert.Execute(FString(#expr), FString(__FILE__), __LINE__, TEXT("")))) \
 				{ \
 					if (FDebug::CheckVerifyFailedImpl(#expr, __FILE__, __LINE__, PLATFORM_RETURN_ADDRESS(), TEXT(""))) \
 					{ \
@@ -67,7 +67,7 @@ public:
 		#define scheckf(expr, format,  ...) \
 			if (UNLIKELY(!(expr))) \
 			{ \
-				if (!(FSafeCheckMacrosModule::OnSafeCheck.IsBound() && FSafeCheckMacrosModule::OnSafeCheck.Execute(FString(#expr), FString(__FILE__), __LINE__, FString::Printf(format, ##__VA_ARGS__)))) \
+				if (!(FSmartAssertMacrosModule::OnSmartAssert.IsBound() && FSmartAssertMacrosModule::OnSmartAssert.Execute(FString(#expr), FString(__FILE__), __LINE__, FString::Printf(format, ##__VA_ARGS__)))) \
 				{ \
 					if (FDebug::CheckVerifyFailedImpl(#expr, __FILE__, __LINE__, PLATFORM_RETURN_ADDRESS(), format, ##__VA_ARGS__)) \
 					{ \
@@ -87,7 +87,7 @@ public:
 		#define srcheckf(expr, return_value, format,  ...) \
 			if (UNLIKELY(!(expr))) \
 			{ \
-				if (!(FSafeCheckMacrosModule::OnSafeCheck.IsBound() && FSafeCheckMacrosModule::OnSafeCheck.Execute(FString(#expr), FString(__FILE__), __LINE__, FString::Printf(format, ##__VA_ARGS__)))) \
+				if (!(FSmartAssertMacrosModule::OnSmartAssert.IsBound() && FSmartAssertMacrosModule::OnSmartAssert.Execute(FString(#expr), FString(__FILE__), __LINE__, FString::Printf(format, ##__VA_ARGS__)))) \
 				{ \
 					if (FDebug::CheckVerifyFailedImpl(#expr, __FILE__, __LINE__, PLATFORM_RETURN_ADDRESS(), format, ##__VA_ARGS__)) \
 					{ \
