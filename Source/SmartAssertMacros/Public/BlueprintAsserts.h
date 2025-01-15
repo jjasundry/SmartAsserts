@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class SAFECHECKMACROS_API UBlueprintAsserts : public UBlueprintFunctionLibrary
+class UBlueprintAsserts : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 	

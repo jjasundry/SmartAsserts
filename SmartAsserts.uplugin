@@ -15,7 +15,7 @@
 	"Installed": true,
 	"Modules": [
 		{
-			"Name": "SafeCheckMacros",
+			"Name": "SmartAssertMacros",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"PlatformAllowList": [
@@ -23,7 +23,7 @@
 			]
 		},
 		{
-			"Name": "SafeCheckEditor",
+			"Name": "SmartAssertEditor",
 			"Type": "Editor",
 			"LoadingPhase": "Default",
 			"PlatformAllowList": [

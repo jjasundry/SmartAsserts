@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class SafeCheckMacros : ModuleRules
+public class SmartAssertMacros : ModuleRules
 {
-	public SafeCheckMacros(ReadOnlyTargetRules Target) : base(Target)
+	public SmartAssertMacros(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
