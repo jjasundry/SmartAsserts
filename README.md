@@ -66,5 +66,8 @@ Adds a node called "Assert" that will crash the PIE session. Outside the editor 
 
 ## History
 
-- (1/8/2025) v1.0  
+- (1/14/2025) v1.0.1  
+  Changed internal name of plugin "SafeCheck" to match the public name, "SmartAsserts"
+  
+- (1/8/2025) v1.0.0  
   Published to GitHub and Fab marketplace 
