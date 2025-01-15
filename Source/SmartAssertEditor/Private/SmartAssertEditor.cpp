@@ -1,7 +1,7 @@
 // Copyright 2024-2025 JJA Sundry, LLC. All Rights Reserved.
 
-#include "SafeCheckEditor.h"
-#include "SafeCheckMacros/Public/SafeCheckMacros.h"
+#include "SmartAssertEditor.h"
+#include "SmartAssertMacros/Public/SmartAssertMacros.h"
 #include "Kismet2/KismetDebugUtilities.h"
 #include "Logging/MessageLog.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -18,33 +18,33 @@
 	#define FirstFrameSimulateBug true
 #endif
 
-DEFINE_LOG_CATEGORY(LogSafeCheckEditor)
+DEFINE_LOG_CATEGORY(LogSmartAssertEditor)
 
-void FSafeCheckEditorModule::StartupModule()
+void FSmartAssertEditorModule::StartupModule()
 {
 #if WITH_EDITOR
-	FSafeCheckMacrosModule::OnSafeCheck.BindRaw(this, &FSafeCheckEditorModule::OnSafeCheck);
-	FSafeCheckMacrosModule::OnBlueprintAssert.BindRaw(this, &FSafeCheckEditorModule::OnBlueprintAssert);
-	UE_LOG(LogSafeCheckEditor, Log, TEXT("Smart Asserts enabled"));
+	FSmartAssertMacrosModule::OnSmartAssert.BindRaw(this, &FSmartAssertEditorModule::OnSmartAssert);
+	FSmartAssertMacrosModule::OnBlueprintAssert.BindRaw(this, &FSmartAssertEditorModule::OnBlueprintAssert);
+	UE_LOG(LogSmartAssertEditor, Log, TEXT("Smart Asserts enabled"));
 #else
-	UE_LOG(LogSafeCheckEditor, Error, TEXT("Editor module loaded without the editor. Don't know how this is possible, but SafeChecks will not be enabled."));
+	UE_LOG(LogSmartAssertEditor, Error, TEXT("Editor module loaded without the editor. Don't know how this is possible, but SmartAsserts will not be enabled."));
 #endif
 }
 
-void FSafeCheckEditorModule::ShutdownModule()
+void FSmartAssertEditorModule::ShutdownModule()
 {
 #if WITH_EDITOR
-	FSafeCheckMacrosModule::OnSafeCheck.Unbind();
-	FSafeCheckMacrosModule::OnBlueprintAssert.Unbind();
-	UE_LOG(LogSafeCheckEditor, Log, TEXT("Smart Asserts disabled"));
+	FSmartAssertMacrosModule::OnSmartAssert.Unbind();
+	FSmartAssertMacrosModule::OnBlueprintAssert.Unbind();
+	UE_LOG(LogSmartAssertEditor, Log, TEXT("Smart Asserts disabled"));
 #else
-	UE_LOG(LogSafeCheckEditor, Error, TEXT("Editor module unloaded without the editor. Don't know how this is possible, but SafeChecks will not be disabled (they also shouldn't have been enabled already)."));
+	UE_LOG(LogSmartAssertEditor, Error, TEXT("Editor module unloaded without the editor. Don't know how this is possible, but SmartAsserts will not be disabled (they also shouldn't have been enabled already)."));
 #endif
 }
 
-bool FSafeCheckEditorModule::OnSafeCheck(FString expression, FString file, int32 line, FString message)
+bool FSmartAssertEditorModule::OnSmartAssert(FString expression, FString file, int32 line, FString message)
 {
-	if (!ShouldSafeCheck())
+	if (!ShouldSmartAssert())
 		return false;
 
 	//Log the message to the more designer-friendly logger.
@@ -65,16 +65,16 @@ bool FSafeCheckEditorModule::OnSafeCheck(FString expression, FString file, int32
 	return true;
 }
 
-bool FSafeCheckEditorModule::OnBlueprintAssert(FString message)
+bool FSmartAssertEditorModule::OnBlueprintAssert(FString message)
 {
-	if (!ShouldSafeCheck())
+	if (!ShouldSmartAssert())
 		return false;
 	
 	//Format the message for the logger and default it if the user-provided message is empty.
 	FText SanitizedMessage;
 	if (message.IsEmpty())
 	{
-		SanitizedMessage = NSLOCTEXT("SafeCheck", "BlueprintAssertEmptyMessage", "Blueprint asserted");
+		SanitizedMessage = NSLOCTEXT("SmartAssert", "BlueprintAssertEmptyMessage", "Blueprint asserted");
 	}
 	else
 	{
@@ -97,7 +97,7 @@ bool FSafeCheckEditorModule::OnBlueprintAssert(FString message)
 	return true;
 }
 
-bool FSafeCheckEditorModule::ShouldSafeCheck()
+bool FSmartAssertEditorModule::ShouldSmartAssert()
 {
 	return (GEngine && //Make sure there is a valid game world
 			GEngine->GameViewport &&
@@ -113,4 +113,4 @@ bool FSafeCheckEditorModule::ShouldSafeCheck()
 		); 
 }
 	
-IMPLEMENT_MODULE(FSafeCheckEditorModule, SafeCheckEditor)
+IMPLEMENT_MODULE(FSmartAssertEditorModule, SmartAssertEditor)
