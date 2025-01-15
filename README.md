@@ -21,7 +21,7 @@ If you wish to enable to the plugin manually, add this to your .uproject file:
 ```
 "Plugins": [
   {
-    "Name": "SafeCheck",
+    "Name": "SmartAsserts",
     "Enabled": true,
     "MarketplaceURL": "https://www.fab.com/listings/77a7b694-c15e-4e7f-a15d-bef5d82ae70d"
   }
@@ -36,7 +36,7 @@ Download the files from the branch named after the version of Unreal your projec
 ### Using this Plugin
 
 After installing the plugin, you should be able to call all blueprint nodes in the editor. I'd recommend making sure the "Assert" node shows up. If it does not, the plugin did not get installed.
-To access the C++ features of this plugin, add ``"SafeCheckMacros"`` to the PrivateDependencyModuleNames in the .Build.cs file of the module you want to use this plugin. After that, you are able to add ``#include "SafeCheckMacros.h"`` to any file inside that module and access all of the C++ features from this module.
+To access the C++ features of this plugin, add ``"SmartAssertMacros"`` to the PrivateDependencyModuleNames in the .Build.cs file of the module you want to use this plugin. After that, you are able to add ``#include "SmartAssertMacros.h"`` to any file inside that module and access all of the C++ features from this module.
 
 ## Features And Usages
 
