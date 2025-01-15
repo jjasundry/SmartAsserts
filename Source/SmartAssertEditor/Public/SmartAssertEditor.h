@@ -5,16 +5,16 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(LogSafeCheckEditor, All, All)
+DECLARE_LOG_CATEGORY_EXTERN(LogSmartAssertEditor, All, All)
 
-class FSafeCheckEditorModule : public IModuleInterface
+class FSmartAssertEditorModule : public IModuleInterface
 {
 public:
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 
-	bool OnSafeCheck(FString expression, FString file, int32 line, FString message);
+	bool OnSmartAssert(FString expression, FString file, int32 line, FString message);
 	bool OnBlueprintAssert(FString message);
-	bool ShouldSafeCheck();
+	bool ShouldSmartAssert();
 };
